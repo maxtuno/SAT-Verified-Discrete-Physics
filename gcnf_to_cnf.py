@@ -60,8 +60,7 @@ Notes:
 - This is the "direct" reduction. It often blows up clauses by O(n*b^2),
   which is useful if you want to measure how much your GCNF "compresses".
 """
-
-from __future__ import annotations
+ 
 import ast
 import argparse
 from dataclasses import dataclass
