@@ -1,5 +1,3 @@
----
-
 # Polímata Research Project
 
 ## Project Nature
@@ -69,6 +67,7 @@ Legally binding terms are defined exclusively in the `LICENSE` file.
 ---
 
 For commercial licensing, see `COMMERCIAL.md`.
+
 
 
 
