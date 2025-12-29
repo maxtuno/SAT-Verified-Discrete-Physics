@@ -313,7 +313,6 @@ def solve_cdcl(
 
 db = set()
 
-
 def oracle(seq, sat, clauses):
     '''Cuenta cuantas clausulas NO se satisfacen con la asignacion (seq, sat).'''
     assignment = dict(zip(seq, sat))
@@ -326,18 +325,11 @@ def oracle(seq, sat, clauses):
             unsat += 1
     return unsat
 
-def oracle(seq, sat, clauses):
-    '''Cuenta cuantas clausulas NO se satisfacen con la asignacion (seq, sat).'''
-    assignment = dict(zip(seq, sat))
-    unsat = 0
-    for clause in clauses:
-        for (x, y) in clause:
-            if assignment.get(x) == y:
-                break
-        else:
-            unsat += 1
-    return unsat
 
+def step(i, j, k, b, seq, sat):
+    seq[i], seq[j] = seq[j], seq[i]
+    sat[k] = (sat[k] + 1) % b # deterministic
+    
 
 def next_orbit(b: int, seq: List[int], sat: List[int]) -> bool:
     global db
@@ -348,20 +340,16 @@ def next_orbit(b: int, seq: List[int], sat: List[int]) -> bool:
                 if key not in db:
                     db.add(key)
                     return True
-                step(i, j, k, seq, sat)
+                step(i, j, k, b, seq, sat)
     return False
 
-
-def step(i, j, k, b, seq, sat):
-    seq[i], seq[j] = seq[j], seq[i]
-    sat[k] = (sat[k] + 1) % b # deterministic
 
 
 def hess_cdcl(clauses: List[Clause], n: int, b: int, *,stop_after_conflicts: int = 0) -> Tuple[str, Optional[List[int]]]:
     seq = list(range(1, n + 1))
     sat = n * [0]
     cur = math.inf
-    while next_orbit(seq, seq, sat):
+    while next_orbit(b, seq, sat):
         for i in range(n):
             for j in range(n):                 
                 glb = math.inf
