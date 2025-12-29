@@ -33,8 +33,6 @@ See full details in:
 
 """Convert a HESS-style solution file into a DIMACS-style boolean model line."""
 
-from __future__ import annotations
-
 import argparse
 import ast
 import sys
