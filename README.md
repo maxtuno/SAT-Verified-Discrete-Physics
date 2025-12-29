@@ -1,3 +1,14 @@
+We present a **methods paper**: a small, auditable workflow that compiles **finite discrete physics constraints** into **SAT** instances with mechanically checkable witnesses. The goal is *not* a continuum unification claim, but a reproducible way to (i) **verify** the satisfiability of discrete model constraints, or (ii) **refute** them (UNSAT) within explicit finite regimes.
+
+Two families of fully checkable examples are provided:
+
+1. **Combinatorial 2D gravity (equilateral)**: we encode the *existence* of a closed simplicial 2‑complex via triangle‑incidence variables, enforce vertex valence constraints, and validate the discrete Gauss–Bonnet curvature sum. We include both SAT (octahedral sphere) and UNSAT (attempted “flat sphere”) instances.
+2. **Boolean locality dynamics (finite‑speed influence)**: a discrete‑time influence propagation model on graphs that yields an exact light‑cone constraint (a Boolean analogue of Lieb–Robinson locality). We provide SAT/UNSAT reachability instances parameterized by graph size and time horizon.
+
+We report clause/variable growth under a one‑hot reduction and include baseline solve times using a reference Python CDCL prototype, while emphasizing that the primary deliverable is the **auditable encoding + validator**, compatible with industrial SAT solvers.
+
+---
+
 # Polímata Research Project
 
 ## Project Nature
@@ -67,6 +78,7 @@ Legally binding terms are defined exclusively in the `LICENSE` file.
 ---
 
 For commercial licensing, see `COMMERCIAL.md`.
+
 
 
 
